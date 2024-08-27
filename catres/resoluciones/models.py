@@ -11,7 +11,7 @@ class Resoluciones(models.Model):
     numero = models.IntegerField()
     sumario = models.TextField(max_length=1024)
     origen = models.CharField(
-        max_length=4,
+        max_length=4,  
         choices= Origen.choices,
         default=Origen.PROCURADOR
     )

@@ -1,0 +1,50 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado Resoluciones</title>
+</head>
+<body>
+        <!--Formulario de busqueda -->
+        <form method="GET" action="{% url 'resoluciones' %}">
+            <input type="text" name="q" placeholder="Buscar por número, sumario u observaciones..." value="{{ request.GET.q }}">
+            <button type="submit">Buscar</button>
+
+        </form>
+        
+
+         <!-- Tabla de resoluciones -->
+         <table>
+            <thead>
+                <tr>
+                    <th>Número</th>
+                    <th>Fecha</th>
+                    <th>Sumario</th>
+                    <th>Origen</th>
+                    <th>Fecha_Public</th>
+                    <th>Observaciones</th>
+                    <th>Link_Resolucion</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for resolucion in misresoluciones %}
+                    <tr>
+                        <td>{{ resolucion.numero }}</td>
+                        <td>{{ resolucion.fecha }}</td>
+                        <td>{{ resolucion.sumario }}</td>
+                        <td>{{ resolucion.origen}}</td>
+                        <td>{{ resolucion.fecha_publicacion}}
+                        <td>{{ resolucion.observaciones }}</td>
+                        <td>{{ resolucion.link_resolucion }} </td>
+                    </tr>
+    
+                {% empty %}
+                    <tr>
+                        <td colspan="3">No se encontraron resoluciones.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+</body>
+</html>
